@@ -25,7 +25,7 @@ $(function(){
     }
   };
 
-  //裝置連線
+    //結果
     recognition.onresult=function(event){
       var i = event.resultIndex;
       var j = event.results[i].length-1;
