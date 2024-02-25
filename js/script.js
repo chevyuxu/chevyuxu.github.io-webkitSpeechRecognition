@@ -26,21 +26,17 @@ $(function(){
   };
 
   //裝置連線
-  boardReady('你的裝置 ID', function (board) {
-    board.systemReset();
-    board.samplingInterval = 250;
-    led = getLed(board, 10); //設定 LED 為 10 號腳
     recognition.onresult=function(event){
       var i = event.resultIndex;
       var j = event.results[i].length-1;
       result = event.results[i][j].transcript; //取出語音辨識結果
       $show.text(result); //顯示語音辨識結果
       if(result.indexOf('開燈')!== -1){
-        led.on();
+        
         $on.addClass('show');
         $off.removeClass('show');
       }else if(result.indexOf('關燈')!== -1){
-        led.off();
+        
         $on.removeClass('show');
         $off.addClass('show');
       }
@@ -48,4 +44,3 @@ $(function(){
     recognition.start(); 
   });
 
-});
